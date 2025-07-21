@@ -95,7 +95,11 @@ const styles = StyleSheet.create({
   },
   button: {
     width: '100%',
+<<<<<<< Updated upstream
     backgroundColor: '#1c7eceff', 
+=======
+    backgroundColor: '#ff5733', 
+>>>>>>> Stashed changes
     paddingVertical: 14,
     borderRadius: 8,
     marginTop: 10, 

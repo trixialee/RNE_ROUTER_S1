@@ -102,7 +102,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   button: {
+<<<<<<< Updated upstream
     backgroundColor: '#209331ff',
+=======
+    backgroundColor: '#1f9225ff',
+>>>>>>> Stashed changes
     paddingVertical: 14,
     borderRadius: 8,
   },
@@ -113,7 +117,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   clearButton: {
+<<<<<<< Updated upstream
     backgroundColor: '#b31b28ff',
+=======
+    backgroundColor: '#e81f3dff',
+>>>>>>> Stashed changes
     paddingVertical: 14,
     borderRadius: 8,
     marginVertical: 10,
