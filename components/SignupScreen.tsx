@@ -2,59 +2,78 @@ import React, { useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 
 const SignupScreen: React.FC = () => {
-  const [fullname, setFullname] = useState('');
-  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [Phone, setPhonenumber] = useState('');
+   const [submitted, setSubmitted] = useState(false);
 
-  const handleSignup = () => {
-    if (password !== password) {
-      alert('Passwords do not match!');
-      return;
+ const handleSubmit = () => {
+    if (email && password && confirmPassword && Phone) {
+      setSubmitted(true);
+    } else {
+      alert('Please fill out all fields.');
     }
-    // Add your signup logic here
-    console.log('Signing up with:', fullname, password);
+  };
+    const handleClear = () => {
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setPhonenumber('');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Create new account</Text>
+      <Text style={styles.title}>Sign Up</Text>
 
       <TextInput
-        placeholder="Full Name"
-        value={fullname}
-        onChangeText={setFullname}
-        style={styles.input}
-        keyboardType="full-name"
-      />
-
-      <TextInput
-        placeholder="Phone Number"
-        value={phone}
-        onChangeText={setPhone}
-        style={styles.input}
-        keyboardType="phone-number"
-      />
-
-      <TextInput
-        placeholder="E-mail Address"
+        placeholder="Email"
         value={email}
         onChangeText={setEmail}
         style={styles.input}
-        secureTextEntry
+        keyboardType="email-address"
       />
 
       <TextInput
-        placeholder="Confirm Password"
+        placeholder="Password"
         value={password}
         onChangeText={setPassword}
         style={styles.input}
         secureTextEntry
       />
 
-      <Pressable style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+      <TextInput
+        placeholder="Confirm Password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        style={styles.input}
+        secureTextEntry
+      />
+        <TextInput
+        placeholder="Phone Number"
+        value={Phone}
+        onChangeText={setPhonenumber}
+        style={styles.input}
+        secureTextEntry
+      />
+
+      <Pressable style={styles.button} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Submit</Text>
       </Pressable>
+       <Pressable style={[styles.button, styles.clearButton]} onPress={handleClear}>
+            <Text style={styles.buttonText}>Clear</Text>
+        </Pressable>
+
+        {submitted && (
+                  <View style = {{alignItems: 'flex-start'}}>
+                    
+                    <Text>Email: {email}</Text>
+                    <Text>Password: {password}</Text>
+                    <Text>Confirm Password: {confirmPassword}</Text>
+                     <Text>Phone number: {Phone}</Text>
+                  </View>)}
+
+        
     </View>
   );
 };
@@ -66,15 +85,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#fff',
-    
+    backgroundColor: 'dirtywhite',
   },
   title: {
     fontSize: 32,
     marginBottom: 24,
-    textAlign: 'left',
+    textAlign: 'center',
     fontWeight: 'bold',
-  
   },
   input: {
     height: 48,
@@ -83,19 +100,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginBottom: 16,
     paddingHorizontal: 12,
-    borderRadius: 25,
   },
   button: {
-    backgroundColor: 'orange',
+    backgroundColor: '#209331ff',
     paddingVertical: 14,
-    borderRadius: 25,
-     marginTop: 35,
- 
-
+    borderRadius: 8,
   },
-  buttonText: {
+  buttonText: { 
     color: '#fff',
+    margin:10,
     textAlign: 'center',
     fontSize: 16,
   },
+  clearButton: {
+    backgroundColor: '#b31b28ff',
+    paddingVertical: 14,
+    borderRadius: 8,
+    marginVertical: 10,
+  }
 });
